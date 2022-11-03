@@ -1,0 +1,513 @@
+#+TITLE: Emacs Configuration
+
+* Package Config
+#+begin_src emacs-lisp
+  (require 'package)
+  (setq package-enable-at-startup nil)
+
+  ;; Add useful package repo
+  (unless (assoc-default "melpa" package-archives)
+    (add-to-list 'package-archives '("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/") t))
+  (unless (assoc-default "melpa-stable" package-archives)
+    (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t))
+  (unless (assoc-default "org" package-archives)
+    (add-to-list 'package-archives '("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/") t))
+  ;;(unless (assoc-default "marmalade" package-archives)
+  ;;  (add-to-list 'package-archives '("marmalade" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/marmalade/")))
+  (unless (assoc-default "gnu" package-archives)
+    (add-to-list 'package-archives '("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
+  (package-initialize)
+
+
+  ;; Install use-package if not available
+  (unless (package-installed-p 'use-package)
+    (package-refresh-contents)
+    (package-install 'use-package))
+
+  (eval-when-compile
+    (require 'use-package))
+  (setq use-package-verbose t)
+  (setq use-package-always-ensure t)
+  (setq warning-minimum-level :emergency)
+#+end_src
+
+* 基础配置
+** Basic Config
+#+begin_src emacs-lisp
+  (set-frame-font "Menlo 16" nil t)
+
+  (display-time-mode 1)
+  (column-number-mode 1)
+  (tool-bar-mode -1)
+  (menu-bar-mode -1)
+  ;;  (toggle-frame-fullscreen)
+
+  ;; Encoding and Envs
+  (prefer-coding-system 'utf-8)
+  (setenv "LANG" "en_US.UTF-8")
+  (setenv "LC_ALL" "en_US.UTF-8")
+  (setenv "LC_CTYPE" "en_US.UTF-8")
+
+  (if (file-exists-p "~/.emacs.d/emacs-custom.el") nil
+    (write-region "" nil "~/.emacs.d/emacs-custom.el"))
+  (setq custom-file "~/.emacs.d/emacs-custom.el")
+  (load custom-file)
+#+end_src
+
+** package自动更新配置
+#+begin_src emacs-lisp
+(use-package auto-package-update
+  :config
+  (auto-package-update-maybe)
+  (setq auto-package-update-delete-old-versions t)
+  ;; 隐藏更新结果
+  ;;(setq auto-package-update-hide-results t)
+  ;; 配置某些禁止自动更新的包
+  ;; (setq auto-package-update-excluded-packages '(magit ivy))
+)
+#+end_src
+
+* Theme Configuration
+#+begin_src emacs-lisp
+  (setq custom-safe-themes t)
+
+  ;; enable doom theme
+  (use-package doom-themes
+    :config
+    ;; Global settings (defaults)
+    (setq doom-themes-enable-bold t
+	  doom-themes-enable-italic t)
+    (doom-themes-visual-bell-config)
+    (if (display-graphic-p)
+	(progn
+	  (doom-themes-neotree-config)
+	  (setq doom-themes-treemacs-theme "doom-colors")
+	  (doom-themes-treemacs-config)
+	  ))
+
+    (doom-themes-org-config)
+    )
+
+  (if (string-equal system-type "darwin")
+      (use-package darkokai-theme
+	:ensure t
+	:config (load-theme 'darkokai t))
+    (use-package doom-themes
+      :ensure t
+      :config (load-theme 'doom-nord))
+    )
+#+end_src
+
+* Evil Mode Configuration
+#+begin_src emacs-lisp
+  ;; install Evil package
+  (unless (package-installed-p 'evil)
+    (package-install 'evil))
+
+  ;; Enable evil
+  (require 'evil)
+  (evil-mode 1)
+#+end_src
+
+* Minibuffer增强(命令补全)
+::todo
+
+* 错误/警告提示引擎
+目前有两个选择：
+
+1. flymake
+这是 Emacs 自带的 minor mode ， (flymake-mode 1) 就可以 enable 它。优点和缺点都是功能少。
+
+2. flycheck
+flycheck 是一个更「现代」的引擎，功能更多，呈现样式更丰富，同时和 lsp-mode 结合最好, 目前使用此包
+#+begin_src emacs-lisp
+(use-package flycheck
+  :init ;; 在 (require) 之前需要执行的
+  (setq flycheck-emacs-lisp-load-path 'inherit)
+  :config
+  (global-flycheck-mode))
+#+end_src
+
+* 补全相关配置
+** 文本补全
+使用： *company-mode*, 支持多backend.
+#+begin_src emacs-lisp
+(use-package company
+  :ensure t
+  ;; 等价于 (add-hook 'after-init-hook #'global-company-mode)
+  :hook (after-init . global-company-mode)
+  :config
+  ;; setq 可以像这样连着设置多个变量的值
+  (setq company-tooltip-align-annotations t ; 注释贴右侧对齐
+        company-tooltip-limit 20            ; 菜单里可选项数量
+        company-show-numbers t              ; 显示编号（然后可以用 M-数字 快速选定某一项）
+        company-idle-delay .2               ; 延时多少秒后弹出
+        company-minimum-prefix-length 1     ; 至少几个字符后开始补全
+        ))
+#+end_src
+
+** 其他
+#+begin_src emacs-lisp
+;; Auto Pair Bracket, use autopair before, now in Emacs 24.4 and after, use electric-pair-mode instead.
+(electric-pair-mode 1)
+(setq electric-pair-pairs '(
+			    (?\" . ?\")
+			    (?\` . ?\`)
+			    (?\( . ?\))
+			    (?\{ . ?\})
+			    ))
+#+end_src
+
+* 项目管理
+Projectile 可以满足对软件项目管理的所有要求：项目列表、项目内文件跳转、 ag 、 make 等等
+#+begin_src emacs-lisp
+(use-package projectile
+  :config
+  ;; 把它的缓存挪到 ~/.emacs.d/.cache/ 文件夹下，让 gitignore 好做
+  (setq projectile-cache-file (expand-file-name ".cache/projectile.cache" user-emacs-directory))
+  ;; 全局 enable 这个 minor mode
+  (projectile-mode 1)
+  ;; 定义和它有关的功能的 leader key
+  (define-key projectile-mode-map (kbd "C-c C-p") 'projectile-command-map))
+#+end_src
+
+| 快捷键      | 功能                     | 场景                                                                         |
+|-------------+--------------------------+------------------------------------------------------------------------------|
+| C-c C-p p   | 在历史项目中切换         | 打开 ~/Projects/elixir/ex_faxtu 项目的文件列表： C-c C-p p pro ex fa RET     |
+| C-c C-p f   | 查找当前项目的文件       | 在上述项目里时， C-c C-p f test conn RET 打开 test/support/conn_case.ex 文件 |
+| C-c C-p s s | 用 ag 查找项目文件的内容 | 查找所有 User 的出现位置： C-c C-p s s User 。Helm 可以再搭配 C-x C-s 把搜索结果保存起来                                                                             |
+
+* 版本管理
+#+begin_src emacs-lisp
+(use-package magit)
+;; That's it.
+#+end_src
+
+* TODO 程序语言服务器(LSP)
+lsp-mode
+
+* TODO Template
+使用yasnippet
+
+* TODO 搜索 跳转和替换
+** 项目内搜索
+** buffer内搜索
+** 可视范围内跳转
+** buffer内正则替换
+** 多光标： multiple-cursors
+
+* TODO Terminal
+** 真 Terminal： emacs-libvterm
+** 模拟 terminal: eshell
+
+* TODO 窗口、工作空间管理
+** edwina
+** winum
+** eyebrowse
+** exwm
+
+* TODO 字体
+* TODO Mode line
+what's the fuck?
+
+* 中文输入法配置
+#+begin_src emacs-lisp
+(use-package pyim
+  :ensure t
+  :demand t
+  :config
+  ;; 激活 basedict 拼音词库
+  (use-package pyim-basedict
+    :ensure t
+    :config (pyim-basedict-enable))
+
+  (setq default-input-method "pyim")
+  (pyim-default-scheme 'quanpin)
+
+  ;; 选词框跟随光标，使用posframe来绘制选词框
+  (use-package posframe
+    :ensure t
+    :config
+      (setq pyim-page-tooltip 'posframe))
+
+  ;;候选词数量设置
+  (setq pyim-page-length 5)
+  ;;开启拼音搜索
+  (pyim-isearch-mode 1)
+  ;;绑定快捷键
+  (global-set-key (kbd "C-\\") 'toggle-input-method))
+#+end_src
+
+* Org Mode Configuration
+
+** 快捷键配置
+#+begin_src emacs-lisp
+(add-hook 'org-mode-hook
+;; enable traditional < s tab keybinding
+(lambda ()
+(require 'org-tempo)))
+#+end_src
+** 告诉Org-mode要支持哪些语言的code blocks
+#+begin_src emacs-lisp
+  ;; Configure Org-mode supported languages
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     (shell . t)
+     (python . t)
+     (js . t)
+     (css .t )))
+#+end_src
+
+** Code Blocks Behaviors
+Org-mode中的code block有它们独特的行为规范,例如,缩进的空格数量,是否能使用shift+方向键选中文本,是否使用编程语言所属mode的原生tab行为以及语法高亮等等. 对于这些行为规范,我们也能做出改变.
+#+begin_src emacs-lisp
+  ;; Let's have pretty source code blocks
+  (setq org-edit-src-content-indentation 0
+	org-src-tab-acts-natively t
+	org-src-fontify-natively t
+	org-confirm-babel-evaluate nil
+	org-support-shift-select 'always)
+#+end_src
+
+#+begin_src emacs-lisp
+  (use-package org-bullets
+    :config
+    (progn
+      (setq org-bullets-bullet-list '("☯" "✿" "✚" "◉" "❀"))
+      (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+      ))
+  (setq org-src-fontify-natively t)
+
+  (use-package valign
+    :config
+    (progn
+      (add-hook 'org-mode-hook #'valign-mode)
+      )
+    )
+
+  ;; Tangle Org files when we save them
+  (defun tangle-on-save-org-mode-file()
+    (when (string= (message "%s" major-mode) "org-mode")
+      (org-babel-tangle)))
+
+  (add-hook 'after-save-hook 'tangle-on-save-org-mode-file)
+
+  ;; Enable the auto-revert mode globally. This is quite useful when you have 
+  ;; multiple buffers opened that Org-mode can update after tangling.
+  ;; All the buffers will be updated with what changed on the disk.
+  (global-auto-revert-mode)  
+
+  ;; Add Org files to the agenda when we save them
+  (defun to-agenda-on-save-org-mode-file()
+    (when (string= (message "%s" major-mode) "org-mode")
+      (org-agenda-file-to-front)))
+
+  (add-hook 'after-save-hook 'to-agenda-on-save-org-mode-file)
+
+  ;; 两个问题: 1. imgs文件夹必须先存在; 2. 没有判断是否是mac系统
+  (defun my-org-screenshot (basename)
+    "Take a screenshot into a time stamped unique-named file in the
+		      same directory as the org-buffer and insert a link to this file."
+    (interactive "sScreenshot name: ")
+    (if (equal basename "")
+	(setq basename (format-time-string "%Y%m%d_%H%M%S")))
+    (setq filename
+	  (concat (file-name-directory (buffer-file-name))
+		  "imgs/"
+		  (file-name-base (buffer-file-name))
+		  "_"
+		  basename
+		  ".png"))
+    (call-process "screencapture" nil nil nil "-s" filename)
+    (insert "#+CAPTION:")
+    (insert basename)
+    (insert "\n")
+    (insert (concat "[[" filename "]]"))
+    (org-display-inline-images))
+#+end_src
+
+* Golang Mode Configuration
+#+begin_src emacs-lisp
+
+#+end_src
+
+* Haskell Model配置
+
+* KeyBinding Configuration
+#+begin_src emacs-lisp
+#+end_src
+
+* Other Configuration
+#+begin_src emacs-lisp
+;; nerd-icons
+;;(add-to-list 'load-path (expand-file-name "~/.emacs.d/site-lisp/nerd-icons"))
+;;(require 'nerd-icons)
+
+;; modeline
+(use-package doom-modeline
+  :ensure t
+  :hook (after-init . doom-modeline-mode))
+
+(set-face-background 'mode-line nil)
+
+(use-package which-key
+  :config
+  (progn
+    (which-key-mode)
+    (which-key-setup-side-window-bottom)))
+
+;; Line Number
+(use-package linum
+  :init
+  (progn
+    (global-linum-mode t)
+    (setq linum-format "%4d ")
+    (set-face-background 'linum nil)
+    ))
+
+#+end_src
+
+** Auto Complete Configuration.
+#+begin_src emacs-lisp
+  ;; Auto Pair Bracket, use autopair before, now in Emacs 24.4 and after, use electric-pair-mode instead.
+  (electric-pair-mode 1)
+  (setq electric-pair-pairs '(
+			      (?\" . ?\")
+			      (?\` . ?\`)
+			      (?\( . ?\))
+			      (?\{ . ?\})
+			      ))
+#+end_src
+
+** Treemacs
+   #+begin_src emacs-lisp
+   (use-package treemacs
+     :ensure t
+     :defer t
+     :init
+     (with-eval-after-load 'winum
+       (define-key winum-keymap (kbd "M-0") #'treemacs-select-window))
+     :config
+     (progn
+       (setq treemacs-collapse-dirs                 (if treemacs-python-executable 3 0)
+	     treemacs-deferred-git-apply-delay      0.5
+	     treemacs-directory-name-transformer    #'identity
+	     treemacs-display-in-side-window        t
+	     treemacs-eldoc-display                 t
+	     treemacs-file-event-delay              5000
+	     treemacs-file-extension-regex          treemacs-last-period-regex-value
+	     treemacs-file-follow-delay             0.2
+	     treemacs-file-name-transformer         #'identity
+	     treemacs-follow-after-init             t
+	     treemacs-git-command-pipe              ""
+	     treemacs-goto-tag-strategy             'refetch-index
+	     treemacs-indentation                   2
+	     treemacs-indentation-string            " "
+	     treemacs-is-never-other-window         nil
+	     treemacs-max-git-entries               5000
+	     treemacs-missing-project-action        'ask
+	     treemacs-no-png-images                 nil
+	     treemacs-no-delete-other-windows       t
+	     treemacs-project-follow-cleanup        nil
+	     treemacs-persist-file                  (expand-file-name ".cache/treemacs-persist" user-emacs-directory)
+	     treemacs-position                      'left
+	     treemacs-recenter-distance             0.1
+	     treemacs-recenter-after-file-follow    nil
+	     treemacs-recenter-after-tag-follow     nil
+	     treemacs-recenter-after-project-jump   'always
+	     treemacs-recenter-after-project-expand 'on-distance
+	     treemacs-show-cursor                   nil
+	     treemacs-show-hidden-files             t
+	     treemacs-silent-filewatch              nil
+	     treemacs-silent-refresh                nil
+	     treemacs-sorting                       'alphabetic-asc
+	     treemacs-space-between-root-nodes      t
+	     treemacs-tag-follow-cleanup            t
+	     treemacs-tag-follow-delay              1.5
+	     treemacs-user-mode-line-format         nil
+	     treemacs-width                         35)
+
+       ;; The default width and height of the icons is 22 pixels. If you are
+       ;; using a Hi-DPI display, uncomment this to double the icon size.
+       ;;(treemacs-resize-icons 44)
+
+       (treemacs-follow-mode t)
+       (treemacs-filewatch-mode t)
+       (treemacs-fringe-indicator-mode t)
+       (pcase (cons (not (null (executable-find "git")))
+		    (not (null treemacs-python-executable)))
+	 (`(t . t)
+	  (treemacs-git-mode 'deferred))
+	 (`(t . _)
+	  (treemacs-git-mode 'simple))))
+     :bind
+     (:map global-map
+	   ("M-0"       . treemacs-select-window)
+	   ("C-x t 1"   . treemacs-delete-other-windows)
+	   ("C-x t t"   . treemacs)
+	   ("C-x t B"   . treemacs-bookmark)
+	   ("C-x t C-t" . treemacs-find-file)
+	   ("C-x t M-t" . treemacs-find-tag)))
+
+   (use-package treemacs-evil
+     :after treemacs evil
+     :ensure t)
+
+   (use-package treemacs-projectile
+     :after treemacs projectile
+     :ensure t)
+
+   (use-package treemacs-icons-dired
+     :after treemacs dired
+     :ensure t
+     :config (treemacs-icons-dired-mode))
+
+   (use-package treemacs-magit
+     :after treemacs magit
+     :ensure t)
+
+   (use-package treemacs-persp
+     :after treemacs persp-mode
+     :ensure t
+     :config (treemacs-set-scope-type 'Perspectives))
+
+   (use-package lsp-treemacs
+     :commands lsp-treemacs-errors-list
+     :config
+     (lsp-metals-treeview-enable t)
+     (setq lsp-metals-treeview-show-when-views-received t))
+   #+end_src
+
+
+** 未分类
+#+begin_src emacs-lisp
+;; Neotree Sidebar
+(use-package neotree
+  :custom
+  (neo-theme 'nerd2)
+  :config
+  (progn
+    (setq neo-smart-open t)
+    (setq neo-theme (if (display-graphic-p) 'icons 'nerd))
+    (setq neo-window-fixed-size nil)
+    ;; (setq-default neo-show-hidden-files nil)
+    (global-set-key [f2] 'neotree-toggle)
+    (global-set-key [f8] 'neotree-dir)
+    ))
+
+;; all-the-icons package config
+(use-package all-the-icons
+  :config
+  (unless (member "all-the-icons" (font-family-list))
+    (all-the-icons-install-fonts t))
+  )
+
+
+;; Keybind
+(global-set-key (kbd "C-/") 'comment-line)
+
+;; add hook
+;; brace-pattern highlight
+(add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
+#+end_src

@@ -1,0 +1,17 @@
+# emacs配置忽略规则
+eshell/
+auto-save-list/
+elpa/
+emacs-config.el
+emacs-custom.el
+\#*.org#
+\#*.el#
+.#*.org
+.#*.el
+*.el~
+*.org~
+.cache/
+.emacs.d/.last-package-update-day
+.emacs.d/pyim/
+.emacs.d/projectile-bookmarks.eld
+.emacs.d/transient/
