@@ -1,12 +1,29 @@
-;;; init.el --- Load the full configuration
+;;; init.el --- entry
+
 ;;; Commentary:
+;;
+;; 配置入口
+;;
 
 ;;; Code:
 
-(require 'org)
-(org-babel-load-file
- (expand-file-name "emacs-config.org"
-                   user-emacs-directory))
+;; 检查emacs版本, 如果太老,提示更新
+(let ((minver "26.1"))
+  (when (version< emacs-version minver)
+    (error "Your Emacs is too old -- this config requires v%s or higher" minver)))
+(when (version< emacs-version "27.1")
+  (message "Your Emacs is old, and some functionality in this config will be disabled. Please upgrade if possible."))
+
+;; 将lisp文件夹添加到加载路径(path)中.
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+
+;; measure startup time
+(require 'init-benchmarking)
+(require 'init-elpa)
+(require 'init-basic)
+(require 'init-evil)
+(require 'init-file-manage)
+
 
 (provide 'init)
 
