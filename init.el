@@ -19,11 +19,20 @@
 
 ;; measure startup time
 (require 'init-benchmarking)
+
 (require 'init-elpa)
 (require 'init-basic)
+
+;; 视觉相关配置
+(require 'ui/init-ui-basic)
+(require 'ui/init-themes)
+(require 'ui/init-mode-line)
+
 (require 'init-evil)
 (require 'init-file-manage)
-
+(require 'init-completion)
+(require 'init-yasnippet)
+(require 'init-format)
 
 (provide 'init)
 

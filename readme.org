@@ -1,16 +1,27 @@
 * 配置emacs
 
 ** 配置目标
-- 写笔记
-- 编程
-  - 代码格式化
-  - lsp配置自动补全
-  - 文件模板
+*** 写笔记
+*** 编程
+**** 代码格式化
+**** lsp配置自动补全
+**** 文件模板
 
 ** 通用配置
-- 主题配置
-- treemacs配置
-- minibuffer补全
-- git配置
-- 终端配置
-- 生成文件指定到其他目录 
+*** TODO UI相关
+**** DONE 主题
+**** TODO 字体配置
+**** DONE modeline
+**** TODO 命令栏
+*** TODO minibuffer补全
+**** DONE treemacs配置
+
+
+*** TODO 中文输入配置
+
+
+*** TODO git配置
+
+*** TODO 终端配置
+
+*** TODO 生成的文件指定到其他目录 
