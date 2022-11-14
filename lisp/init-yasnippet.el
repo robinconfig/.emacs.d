@@ -15,4 +15,7 @@
   (setq auto-insert-alist nil) ;; remove this like to restore defaults
   (add-to-list 'auto-insert-alist  '("CMakeLists\\.txt$" . [nega/yas-cmake-bp])))
 
+(use-package yasnippet-snippets
+  :ensure t)
+
 (provide 'init-yasnippet)

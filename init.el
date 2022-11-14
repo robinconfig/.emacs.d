@@ -34,6 +34,8 @@
 (require 'init-yasnippet)
 (require 'init-format)
 
+(require 'lang/init-golang)
+
 (provide 'init)
 
 ;;; init.el ends here

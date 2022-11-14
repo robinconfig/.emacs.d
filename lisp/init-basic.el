@@ -25,6 +25,7 @@
 (column-number-mode 1)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
+(global-linum-mode 1) ;;始终显示行号
 ;;  (toggle-frame-fullscreen)
 
 ;; Encoding and Envs
