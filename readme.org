@@ -25,3 +25,8 @@
 *** TODO 终端配置
 
 *** TODO 生成的文件指定到其他目录 
+
+
+** golang配置
+配置文件: lisp/lang/init-golang.el
+目前添加部分golang开发配置, windows上有问题,暂时提交, 以备linux上继续配置, windows上继续使用gocharm
