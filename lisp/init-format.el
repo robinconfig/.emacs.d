@@ -10,4 +10,5 @@
   (global-set-key (kbd "M-F") #'ian/format-code)
   (add-hook 'prog-mode-hook #'format-all-ensure-formatter))
 
+
 (provide 'init-format)

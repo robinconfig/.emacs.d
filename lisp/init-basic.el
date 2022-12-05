@@ -25,7 +25,7 @@
 (column-number-mode 1)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
-(global-linum-mode 1) ;;始终显示行号
+(global-linum-mode 1) ;; 始终显示行号
 ;;  (toggle-frame-fullscreen)
 
 ;; Encoding and Envs
@@ -49,7 +49,8 @@
   ;;(setq auto-package-update-hide-results t)
   ;; 配置某些禁止自动更新的包
   ;; (setq auto-package-update-excluded-packages '(magit ivy))
-)
+  )
+
 
 (provide 'init-basic)
 ;;; init-basic.el ends here

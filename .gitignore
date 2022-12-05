@@ -15,3 +15,10 @@ emacs-custom.el
 pyim/
 projectile-bookmarks.eld
 transient/
+.lsp-session-v1
+backups/
+custom.el
+emacs_backtrace.txt
+history
+ido.last
+places

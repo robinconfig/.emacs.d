@@ -29,3 +29,4 @@
 
 
 (provide 'lang/init-golang)
+;;; init-golang.el ends here
