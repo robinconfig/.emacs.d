@@ -22,6 +22,8 @@
  
 (require 'init-elpa)
 (require 'init-basic)
+
+(require 'init-custom)
  
 ;; 视觉相关配置
 (require 'ui/init-ui-basic)
@@ -33,6 +35,9 @@
 (require 'init-completion)
 (require 'init-yasnippet)
 (require 'init-format)
+(require 'init-autoinsert)
+
+(require 'init-minibuffer)
 
 (require 'lang/init-lsp)
 (require 'init-hint)
