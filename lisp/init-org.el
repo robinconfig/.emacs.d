@@ -9,7 +9,6 @@
 ;;
 ;;; Code:
 
-;; Produce backtraces when errors occur: can be helpful to diagnose startup issues
 ;;(setq debug-on-error t)
 
 ;; 快捷键配置(<s)
@@ -17,6 +16,7 @@
 	  ;; enable traditional < s tab keybinding
 	  (lambda ()
 	    (require 'org-tempo)))
+
 
 ;; org mode下, 禁用electric-pair自动匹配<>的功能, 这样就可以使用<s <ti <au等快捷功能了.
 ;; 代码来源: https://stackoverflow.com/a/69765466/1372066
@@ -35,6 +35,7 @@
    (js . t)
    (css .t )))
 
+
 ;; Code Blocks Behaviors
 ;; Org-mode中的code block有它们独特的行为规范,例如,缩进的空格数量,是否能使用shift+方向键选中文本,是否使用编程语言所属mode的原生tab行为以及语法高亮等等. 对于这些行为规范,我们也能做出改变.
 ;; Let's have pretty source code blocks
@@ -44,6 +45,7 @@
       org-confirm-babel-evaluate nil
       org-support-shift-select 'always)
 
+
 (use-package org-bullets
   :config
   (progn
@@ -52,6 +54,7 @@
     ))
 (setq org-src-fontify-natively t)
 
+
 (use-package valign
   :config
   (progn
@@ -59,24 +62,26 @@
     )
   )
 
+
 ;; Tangle Org files when we save them
 (defun tangle-on-save-org-mode-file()
   (when (string= (message "%s" major-mode) "org-mode")
     (org-babel-tangle)))
-
 (add-hook 'after-save-hook 'tangle-on-save-org-mode-file)
+
 
 ;; Enable the auto-revert mode globally. This is quite useful when you have
 ;; multiple buffers opened that Org-mode can update after tangling.
 ;; All the buffers will be updated with what changed on the disk.
 (global-auto-revert-mode)
 
+
 ;; Add Org files to the agenda when we save them
 (defun to-agenda-on-save-org-mode-file()
   (when (string= (message "%s" major-mode) "org-mode")
     (org-agenda-file-to-front)))
-
 (add-hook 'after-save-hook 'to-agenda-on-save-org-mode-file)
+
 
 ;; 两个问题: 1. imgs文件夹必须先存在; 2. 没有判断是否是mac系统
 ;; (defun my-org-screenshot (basename)
@@ -98,6 +103,6 @@
 ;;   (insert (concat "[[" filename "]]"))
 ;;   (org-display-inline-images))
 
-(provide 'init-org)
 
+(provide 'init-org)
 ;;; init-org.el ends here
