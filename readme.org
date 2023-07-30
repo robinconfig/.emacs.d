@@ -1,3 +1,6 @@
+#+title: 我个人的Emacs 配置
+#+author: RobinVanYang
+
 * 配置emacs
 
 ** 配置目标
@@ -33,4 +36,6 @@
 
 
 ** 问题
-存在error in process 
+存在error in process
+
+

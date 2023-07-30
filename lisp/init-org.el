@@ -1,8 +1,30 @@
+;;; INIT-ORG --- Org Mode配置文件 -*- lexical-binding: t -*-
+;;
+;; Author: RobinVanYang <thehappyone@163.com>
+;; Copyright © 2023 RobinVanYang. all rights reserved.
+;; URL: robinvanyang.github.io
+;; Created at: 30 七月 2023
+;;
+;;; Commentary:
+;;
+;;; Code:
+
+;; Produce backtraces when errors occur: can be helpful to diagnose startup issues
+;;(setq debug-on-error t)
+
 ;; 快捷键配置(<s)
 (add-hook 'org-mode-hook
-;; enable traditional < s tab keybinding
-(lambda ()
-(require 'org-tempo)))
+	  ;; enable traditional < s tab keybinding
+	  (lambda ()
+	    (require 'org-tempo)))
+
+;; org mode下, 禁用electric-pair自动匹配<>的功能, 这样就可以使用<s <ti <au等快捷功能了.
+;; 代码来源: https://stackoverflow.com/a/69765466/1372066
+(add-hook 'org-mode-hook (lambda ()
+           (setq-local electric-pair-inhibit-predicate
+                   `(lambda (c)
+                  (if (char-equal c ?<) t (,electric-pair-inhibit-predicate c))))))
+
 
 ;; 配置Org-mode要支持哪些语言的code blocks
 (org-babel-do-load-languages
@@ -15,12 +37,12 @@
 
 ;; Code Blocks Behaviors
 ;; Org-mode中的code block有它们独特的行为规范,例如,缩进的空格数量,是否能使用shift+方向键选中文本,是否使用编程语言所属mode的原生tab行为以及语法高亮等等. 对于这些行为规范,我们也能做出改变.
- ;; Let's have pretty source code blocks
+;; Let's have pretty source code blocks
 (setq org-edit-src-content-indentation 0
-  org-src-tab-acts-natively t
-  org-src-fontify-natively t
-  org-confirm-babel-evaluate nil
-  org-support-shift-select 'always)
+      org-src-tab-acts-natively t
+      org-src-fontify-natively t
+      org-confirm-babel-evaluate nil
+      org-support-shift-select 'always)
 
 (use-package org-bullets
   :config
@@ -44,10 +66,10 @@
 
 (add-hook 'after-save-hook 'tangle-on-save-org-mode-file)
 
-;; Enable the auto-revert mode globally. This is quite useful when you have 
+;; Enable the auto-revert mode globally. This is quite useful when you have
 ;; multiple buffers opened that Org-mode can update after tangling.
 ;; All the buffers will be updated with what changed on the disk.
-(global-auto-revert-mode)  
+(global-auto-revert-mode)
 
 ;; Add Org files to the agenda when we save them
 (defun to-agenda-on-save-org-mode-file()
@@ -57,23 +79,25 @@
 (add-hook 'after-save-hook 'to-agenda-on-save-org-mode-file)
 
 ;; 两个问题: 1. imgs文件夹必须先存在; 2. 没有判断是否是mac系统
-(defun my-org-screenshot (basename)
-  "Take a screenshot into a time stamped unique-named file in the same directory as the org-buffer and insert a link to this file."
-  (interactive "sScreenshot name: ")
-  (if (equal basename "")
-	  (setq basename (format-time-string "%Y%m%d_%H%M%S")))
-  (setq filename
-	  (concat (file-name-directory (buffer-file-name))
-		  "imgs/"
-		  (file-name-base (buffer-file-name))
-		  "_"
-		  basename
-		  ".png"))
-  (call-process "screencapture" nil nil nil "-s" filename)
-  (insert "#+CAPTION:")
-  (insert basename)
-  (insert "\n")
-  (insert (concat "[[" filename "]]"))
-  (org-display-inline-images))
+;; (defun my-org-screenshot (basename)
+;;   "Take a screenshot into a time stamped unique-named file in the same directory as the org-buffer and insert a link to this file."
+;;   (interactive "sScreenshot name: ")
+;;   (if (equal basename "")
+;; 	  (setq basename (format-time-string "%Y%m%d_%H%M%S")))
+;;   (setq filename
+;; 	  (concat (file-name-directory (buffer-file-name))
+;; 		  "imgs/"
+;; 		  (file-name-base (buffer-file-name))
+;; 		  "_"
+;; 		  basename
+;; 		  ".png"))
+;;   (call-process "screencapture" nil nil nil "-s" filename)
+;;   (insert "#+CAPTION:")
+;;   (insert basename)
+;;   (insert "\n")
+;;   (insert (concat "[[" filename "]]"))
+;;   (org-display-inline-images))
 
 (provide 'init-org)
+
+;;; init-org.el ends here

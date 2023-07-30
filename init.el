@@ -41,6 +41,7 @@
 
 (require 'lang/init-lsp)
 (require 'init-hint)
+(require 'init-org)
 (require 'lang/init-golang)
 (require 'lang/init-python)
 

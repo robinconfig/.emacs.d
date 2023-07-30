@@ -1,4 +1,19 @@
-;; 补全相关配置
+;;; INIT-COMPLETION --- 自动完成配置 -*- lexical-binding: t -*-
+;;
+;; Author: RobinVanYang <thehappyone@163.com>
+;; Copyright © 2023 RobinVanYang. all rights reserved.
+;; URL: robinvanyang.github.io
+;; Created at: 30 七月 2023
+;;
+;;; Commentary:
+;;
+;; 所有补全/自动完成的配置
+;;
+;;; Code:
+
+;; Produce backtraces when errors occur: can be helpful to diagnose startup issues
+;;(setq debug-on-error t)
+
 ;; 文本补全
 ;; 使用： *company-mode*, 支持多backend.
 (use-package company
@@ -19,11 +34,11 @@
 ;; Auto Pair Bracket, use autopair before, now in Emacs 24.4 and after, use electric-pair-mode instead.
 (electric-pair-mode 1)
 (setq electric-pair-pairs '(
-			    (?\" . ?\")
-			    (?\` . ?\`)
-			    (?\( . ?\))
-			    (?\{ . ?\})
+			    (?" . ?")
+			    (?` . ?`)
+			    (?( . ?))
+			    (?{ . ?})
 			    ))
 
-
 (provide 'init-completion)
+;;; init-completion.el ends here
