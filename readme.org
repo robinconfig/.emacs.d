@@ -72,13 +72,17 @@ Swiper, Ivy
 * TODO 项目管理
 ** projectile
 
-* TODO Golang开发
+* Language Specific
+** Lisp
+
+** TODO Golang
 配置文件: lisp/lang/init-golang.el
 目前添加部分golang开发配置, windows上有问题,暂时提交, 以备linux上继续配置, windows上继续使用gocharm
 
-* TODO Python开发
+** TODO Python
 
-* TODO Web开发(html, javascript, css, vue, react等)
+** TODO Web开发(html, javascript, css, vue, react等)
+
 
 * DONE 问题
 存在error in process
@@ -86,3 +90,4 @@ Swiper, Ivy
 
 * 参考
 [[https://www.john2x.com/emacs.html][John's Emacs Config]]
+[[https://www.panghuli.cn/notebook/emacs/modes/use-package-manual.html][use-package中文帮助]]
