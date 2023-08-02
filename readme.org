@@ -9,37 +9,80 @@
 **** lsp配置自动补全
 **** 文件模板
 
-* 基础配置
+* Package托管与管理
+文件位置: ~/.emacs.d/lisp/init-elpa.el
+将package archives更改为国内的服务器
+将melpa, melpa-stable, org加入包管理路径
 
-* DONE 主题
+* TODO Utility Functions and Macros
 
-* TODO 字体配置
++* OS Specific+
+** MacOS
+** Linux
+** Win
 
-* DONE modeline
+* TODO 基础配置
+
+* TODO UI
+** 基础UI, 如toolbar, menubar, line-number, scrollbar
+** 主题
+** 字体
++** treemacs配置+
+
+* TODO Window, Frame, Buffer配置
+
+* TODO 文件管理
+Dired
+
+* 搜索
+Swiper, Ivy
+
+* TODO Org Mode配置
+
+* TODO modeline
 
 * TODO 命令栏
 
 * TODO minibuffer补全
 
-* DONE treemacs配置
-
 * TODO 中文输入配置
 
 * TODO 终端配置
 
-* TODO git配置
+* TODO 版本控制
+位置: ~/.emacs.d/lisp/init-vcs.el 
+** Magit
+** git-gutter
 
 * TODO 生成的文件指定到其他目录
 
-* DONE Snippets/文件模板配置
+* TODO 自动补全(Completion)
+
+* TODO Snippets/文件模板配置
 配置文件:
 ~/.emacs.d/lisp/init-yasnippet.el
 ~/.emacs.d/lisp/init-autoinsert.el
 
-* golang配置
+* Shell
+
+* TODO LSP(Language Server Protocol)
+** lsp-mode
+** lsp-ui
+
+* TODO 项目管理
+** projectile
+
+* TODO Golang开发
 配置文件: lisp/lang/init-golang.el
 目前添加部分golang开发配置, windows上有问题,暂时提交, 以备linux上继续配置, windows上继续使用gocharm
-* 问题
+
+* TODO Python开发
+
+* TODO Web开发(html, javascript, css, vue, react等)
+
+* DONE 问题
 存在error in process
 
 
+* 参考
+[[https://www.john2x.com/emacs.html][John's Emacs Config]]
