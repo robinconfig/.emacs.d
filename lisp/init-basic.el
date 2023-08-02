@@ -12,6 +12,7 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+
 (eval-when-compile
   (require 'use-package))
 (setq use-package-verbose t)
@@ -25,7 +26,9 @@
 (column-number-mode 1)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
-(global-linum-mode 1) ;; 始终显示行号
+(global-display-line-numbers-mode t)
+;; (global-linum-mode 1) ;; 始终显示行号
+(message "Hello, Kola!")
 ;;  (toggle-frame-fullscreen)
 
 ;; Encoding and Envs
@@ -33,6 +36,7 @@
 (setenv "LANG" "en_US.UTF-8")
 (setenv "LC_ALL" "en_US.UTF-8")
 (setenv "LC_CTYPE" "en_US.UTF-8")
+
 
 ;; 设置自定义配置文件
 (if (file-exists-p "~/.emacs.d/emacs-custom.el") nil

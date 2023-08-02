@@ -19,10 +19,9 @@
 
 ;; measure startup time
 (require 'init-benchmarking)
- 
+
 (require 'init-elpa)
 (require 'init-basic)
-
 (require 'init-custom)
  
 ;; 视觉相关配置
@@ -44,6 +43,7 @@
 (require 'init-org)
 (require 'lang/init-golang)
 (require 'lang/init-python)
+(require 'init-vcs)
 
 (provide 'init)
 
