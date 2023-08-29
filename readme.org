@@ -52,7 +52,8 @@ Swiper, Ivy
 * TODO 版本控制
 位置: ~/.emacs.d/lisp/init-vcs.el 
 ** Magit
-** git-gutter
++** git-gutter+ windows下面有鼠标移动问题，移除
+** TODO diff-hl
 
 * TODO 生成的文件指定到其他目录
 
@@ -86,6 +87,9 @@ Swiper, Ivy
 
 * DONE 问题
 存在error in process
+
+* 有坑的package
+- git-gutter, 加入之后windows下鼠标上下移动明显卡顿
 
 
 * 参考

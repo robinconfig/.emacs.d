@@ -18,7 +18,7 @@
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
 ;; measure startup time
-(require 'init-benchmarking)
+;; (require 'init-benchmarking)
 
 (require 'init-elpa)
 (require 'init-basic)
