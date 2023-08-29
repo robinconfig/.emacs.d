@@ -1,6 +1,13 @@
 (use-package all-the-icons
   :if (display-graphic-p))
 
+(use-package dashboard
+  :ensure t
+  :init
+  (dashboard-setup-startup-hook)
+  :config
+  (setq dashboard-set-footer nil))
+
 
 (add-to-list 'after-make-frame-functions
 	     (lambda (new-frame)

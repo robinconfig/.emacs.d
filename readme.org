@@ -50,7 +50,7 @@ Swiper, Ivy
 * TODO 终端配置
 
 * TODO 版本控制
-位置: ~/.emacs.d/lisp/init-vcs.el 
+位置: ~/.emacs.d/lisp/init-vcs.el
 ** Magit
 +** git-gutter+ windows下面有鼠标移动问题，移除
 ** TODO diff-hl
