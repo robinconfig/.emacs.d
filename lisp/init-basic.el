@@ -24,8 +24,8 @@
 
 (display-time-mode 1)
 (column-number-mode 1)
-(tool-bar-mode -1)
-(menu-bar-mode -1)
+;; (tool-bar-mode -1)
+;; (menu-bar-mode -1)
 (global-display-line-numbers-mode t)
 ;; (global-linum-mode 1) ;; 始终显示行号
 (message "Hello, Kola!")

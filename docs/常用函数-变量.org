@@ -1,0 +1,12 @@
+在Emacs中查看函数文档: 快捷键M-x: describe-function
+在Emacs中查看变量文档: 快捷键M-x: describe-variable
+打印变量值: 快捷键C-h v, 然后输入变量名称
+
+函数`fboundp`
+(fboundp SYMBOL)
+Return t if SYMBOL's function definition is not void.
+
+变量gc-cons-threshold
+emacs触发gc的内存阈值,默认值为800000 bytes
+
+
