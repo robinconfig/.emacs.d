@@ -41,14 +41,15 @@
 
 (require 'lang/init-lsp)
 (require 'init-hint)
-(require 'init-org)
-(require 'lang/init-golang)
-(require 'lang/init-python)
 (require 'init-vcs)
 (require 'bbt-formatter)
 
 ;; 特定Major Mode配置
+(require 'bbt-programming)
+(require 'init-org)
 (require 'init-elisp)
+(require 'lang/init-golang)
+(require 'lang/init-python)
 
 (require 'bbt-ielm)
 
