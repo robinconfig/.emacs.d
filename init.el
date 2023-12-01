@@ -22,11 +22,12 @@
 
 (require 'init-elpa)
 (require 'init-basic)
-(require 'init-custom)
+(require 'bbt-custom)
  
 ;; 视觉相关配置
 (require 'ui/init-ui-basic)
-(require 'ui/init-themes)
+(require 'ui/bbt-themes)
+(require 'ui/bbt-font)
 (require 'ui/init-mode-line)
  
 (require 'init-evil)
@@ -44,6 +45,12 @@
 (require 'lang/init-golang)
 (require 'lang/init-python)
 (require 'init-vcs)
+(require 'bbt-formatter)
+
+;; 特定Major Mode配置
+(require 'init-elisp)
+
+(require 'bbt-ielm)
 
 (provide 'init)
 
