@@ -43,7 +43,9 @@ Swiper, Ivy
 
 * TODO 命令栏
 
-* TODO minibuffer补全
+* TODO minibuffer
+** 补全？
+** 快捷键自动提示(使用which-key)
 
 * TODO 中文输入配置
 
@@ -72,9 +74,11 @@ Swiper, Ivy
 
 * TODO 项目管理
 ** projectile
+** 工程内搜索关键字
+** 工程内搜索文件名
 
 * Language Specific
-** Lisp
+** Lisp/ELisp
 
 ** TODO Golang
 配置文件: lisp/lang/init-golang.el
@@ -82,10 +86,12 @@ Swiper, Ivy
 
 ** TODO Python
 
+** TODO C/C++
+
 ** TODO Web开发(html, javascript, css, vue, react等)
 
 
-* DONE 问题
+* 问题
 存在error in process
 
 * 有坑的package

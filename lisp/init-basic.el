@@ -1,13 +1,6 @@
-;;; init-basic.el --- emacs基础配置
+;;; emacs基础配置
 
-;;; Commentary:
-;;
-;; emacs基础配置
-;;
-
-;;; Code:
-
-;; 安装并配置use-package package
+;; 安装并配置use-package包
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
@@ -57,11 +50,10 @@
 
 ;; 组合按键提示
 ;; 很奇怪， 没有配这个的时候就有组合按键的提示，???...
-(use-package which-key
-  :delight
-  :config
-  (which-key-mode))
+;;(use-package which-key
+;;  :delight
+;;  :config
+;;  (which-key-mode))
 
 
 (provide 'init-basic)
-;;; init-basic.el ends here

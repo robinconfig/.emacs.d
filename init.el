@@ -1,11 +1,4 @@
-;;; init.el --- entry
-
-;;; Commentary:
-;;
-;; 配置入口
-;;
-
-;;; Code:
+;;; Emacs配置入口
 
 ;; 检查emacs版本, 如果太老,提示更新
 (let ((minver "26.1"))
@@ -51,8 +44,4 @@
 (require 'lang/init-golang)
 (require 'lang/init-python)
 
-(require 'bbt-ielm)
-
 (provide 'init)
-
-;;; init.el ends here
