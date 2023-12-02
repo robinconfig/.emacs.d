@@ -5,9 +5,10 @@
   (setq lsp-keymap-prefix "C-c l")
   :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
          (python-mode . lsp-deferred)
+	 (go-mode . lsp-deferred)
          ;; if you want which-key integration
          (lsp-mode . lsp-enable-which-key-integration))
-  :commands lsp-deferred)
+  :commands (lsp lsp-deferred))
 
 ;; optionally
 (use-package lsp-ui :commands lsp-ui-mode)
@@ -30,10 +31,7 @@
 ;; (use-package dap-mode)
 ;; (use-package dap-LANGUAGE) to load the dap adapter for your language
 
-;; optional if you want which-key integration
-(use-package which-key
-    :config
-    (which-key-mode))
-
+(setq lsp-go-analyses '((shadow . t)
+                        (simplifycompositelit . :json-false)))
 
 (provide 'lang/init-lsp)
