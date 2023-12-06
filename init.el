@@ -13,17 +13,18 @@
 ;; measure startup time
 ;; (require 'init-benchmarking)
 
-(require 'init-elpa)
-(require 'init-basic)
+(require 'bbt-elpa)
+(require 'bbt-basic)
 (require 'bbt-custom)
  
 ;; 视觉相关配置
-(require 'ui/init-ui-basic)
+(require 'ui/bbt-ui-basic)
 (require 'ui/bbt-themes)
 (require 'ui/bbt-font)
-(require 'ui/init-mode-line)
- 
-(require 'init-evil)
+(require 'ui/bbt-mode-line)
+
+(require 'bbt-ivy)
+(require 'bbt-evil)
 ;; (require 'init-file-manage)
 (require 'init-completion)
 (require 'init-yasnippet)

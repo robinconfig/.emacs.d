@@ -49,5 +49,10 @@
   ;; (setq auto-package-update-excluded-packages '(magit ivy))
   )
 
+(use-package command-log-mode
+  :ensure t
+  :init
+  (command-log-mode))
 
-(provide 'init-basic)
+
+(provide 'bbt-basic)

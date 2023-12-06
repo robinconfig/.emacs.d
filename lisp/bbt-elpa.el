@@ -1,7 +1,4 @@
-;;; init-elpa.el --- Settings and helpers for package.el -*- lexical-binding: t -*-
-;;; Commentary:
-
-;;; Code:
+;;; 配置package的repo
 
 (require 'package)
 (setq package-enable-at-startup nil)
@@ -24,5 +21,4 @@
 (package-initialize)
 
 
-(provide 'init-elpa)
-;;; init-elpa.el ends here
+(provide 'bbt-elpa)
