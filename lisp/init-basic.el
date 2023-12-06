@@ -13,15 +13,15 @@
 (setq warning-minimum-level :emergency)
 
 
-(set-frame-font "Menlo 16" nil t)
 
-(display-time-mode 1)
-(column-number-mode 1)
-;; (tool-bar-mode -1)
-;; (menu-bar-mode -1)
+;; 当另一程序修改了文件时，让 Emacs 及时刷新 Buffer
+(global-auto-revert-mode t)
+;; 选中文本后输入文本会替换文本（更符合我们习惯了的其它编辑器的逻辑）
+(delete-selection-mode t)
+(display-time-mode t)
+(column-number-mode t)
 (global-display-line-numbers-mode t)
-;; (global-linum-mode 1) ;; 始终显示行号
-(message "Hello, Kola!")
+(setq display-line-numbers-type 'relative)
 ;;  (toggle-frame-fullscreen)
 
 ;; Encoding and Envs
@@ -29,6 +29,7 @@
 (setenv "LANG" "en_US.UTF-8")
 (setenv "LC_ALL" "en_US.UTF-8")
 (setenv "LC_CTYPE" "en_US.UTF-8")
+
 
 
 ;; 设置自定义配置文件
@@ -47,13 +48,6 @@
   ;; 配置某些禁止自动更新的包
   ;; (setq auto-package-update-excluded-packages '(magit ivy))
   )
-
-;; 组合按键提示
-;; 很奇怪， 没有配这个的时候就有组合按键的提示，???...
-;;(use-package which-key
-;;  :delight
-;;  :config
-;;  (which-key-mode))
 
 
 (provide 'init-basic)

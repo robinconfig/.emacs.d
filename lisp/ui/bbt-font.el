@@ -1,7 +1,7 @@
 ;;; 字体配置
 ;;(setq debug-on-error t)
 
-(use-package cnfont
+(use-package cnfonts
   :ensure t
   :config
   (cnfonts-mode 1)
@@ -46,10 +46,10 @@
 		      (cjk-misc . ,f-cjk)))
 	(set-fontset-font t (car pair) (font-spec :family (cdr pair)) nil 'prepend)))))
 
-(add-hook 'after-init-hook #'cabins-font-setup)
-(when (daemonp)
-  (add-hook 'after-make-frame-functions
-	    (lambda (frame)
-	      (with-selected-frame frame (cabins-font-setup)))))
+;; (add-hook 'after-init-hook #'cabins-font-setup)
+;; (when (daemonp)
+;;   (add-hook 'after-make-frame-functions
+;; 	    (lambda (frame)
+;; 	      (with-selected-frame frame (cabins-font-setup)))))
 
 (provide 'ui/bbt-font)
