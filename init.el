@@ -44,5 +44,6 @@
 (require 'init-elisp)
 (require 'lang/init-golang)
 (require 'lang/init-python)
+(require 'lang/bbt-rust)
 
 (provide 'init)
