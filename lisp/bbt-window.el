@@ -1,4 +1,4 @@
-;;; window相关配置
+;;; window配置
 
 ;;(setq debug-on-error t)
 

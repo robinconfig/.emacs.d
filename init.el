@@ -39,6 +39,7 @@
 (require 'bbt-formatter)
 
 ;; 特定Major Mode配置
+;; (require 'lang/bbt--tree-sitter)
 (require 'bbt-programming)
 (require 'init-org)
 (require 'init-elisp)
