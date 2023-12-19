@@ -2,6 +2,8 @@
 
 ;;(setq debug-on-error t)
 
+
+;;; rustic + lsp-mode
 ;;; rustic: 基于rust-mode,但是提供额外的特性:
 ;;; - cargo popup
 ;;; - multiline error parsing

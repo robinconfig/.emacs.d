@@ -59,36 +59,39 @@ Swiper, Ivy
 
 * TODO 生成的文件指定到其他目录
 
-* TODO 自动补全(Completion)
-
-* TODO Snippets/文件模板配置
+* 编程环境配置
+** 缺省配置
+- 自动补全(Completion)
+  
+- Snippets/文件模板配置
 配置文件:
 ~/.emacs.d/lisp/init-yasnippet.el
 ~/.emacs.d/lisp/init-autoinsert.el
 
-* Shell
+- TODO 项目管理
+*** projectile
+*** 工程内搜索关键字
+*** 工程内搜索文件名
 
-* TODO LSP(Language Server Protocol)
-** lsp-mode
-** lsp-ui
+- Shell
 
-* TODO 项目管理
-** projectile
-** 工程内搜索关键字
-** 工程内搜索文件名
+- TODO LSP(Language Server Protocol)
+*** lsp-mode
+*** lsp-ui
 
-* Language Specific
-** Lisp/ELisp
 
-** TODO Golang
+** Language Specific
+*** Lisp/ELisp
+
+*** TODO Golang
 配置文件: lisp/lang/init-golang.el
 目前添加部分golang开发配置, windows上有问题,暂时提交, 以备linux上继续配置, windows上继续使用gocharm
 
-** TODO Python
+*** TODO Python
 
-** TODO C/C++
+*** TODO C/C++
 
-** TODO Web开发(html, javascript, css, vue, react等)
+*** TODO Web开发(html, javascript, css, vue, react等)
 
 
 * 问题
