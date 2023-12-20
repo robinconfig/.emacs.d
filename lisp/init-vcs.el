@@ -39,8 +39,8 @@
          (dired-mode . diff-hl-dired-mode))
   :init (setq diff-hl-draw-borders nil)
   :config
-  ;; Highlight on-the-fly
-  (diff-hl-flydiff-mode 1)
+  ;; Highlight on-the-fly, 启用此效果后在Mac下编辑vcs下文件的时候特别卡, 所以禁用掉
+  ;; (diff-hl-flydiff-mode 1)
 
   ;; Set fringe style
   (setq-default fringes-outside-margins t)

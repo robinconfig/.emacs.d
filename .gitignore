@@ -25,3 +25,6 @@ places
 .vs/
 org-persist/
 recentf
+cnfonts/
+straight/
+tree-sitter/

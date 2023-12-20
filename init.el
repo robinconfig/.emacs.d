@@ -13,7 +13,8 @@
 ;; measure startup time
 ;; (require 'init-benchmarking)
 
-(require 'bbt-elpa)
+(require 'bbt-constant)
+(require 'bbt-package)
 (require 'bbt-basic)
 (require 'bbt-custom)
  

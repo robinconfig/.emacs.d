@@ -38,6 +38,8 @@
 (use-package lsp-mode
   :ensure
   :commands lsp
+  :hook (
+	 (go-mode . lsp-deferred))
   :custom
   ;; what to use when checking on-save. "check" is default, I prefer clippy
   (lsp-rust-analyzer-cargo-watch-command "clippy")
@@ -52,8 +54,7 @@
   (lsp-rust-analyzer-display-lifetime-elision-hints-use-parameter-names nil)
   (lsp-rust-analyzer-display-closure-return-type-hints t)
   (lsp-rust-analyzer-display-parameter-hints nil)
-  (lsp-rust-analyzer-display-reborrow-hints nil)
-  :config
-  (add-hook 'lsp-mode-hook 'lsp-ui-mode))
+  (lsp-rust-analyzer-display-reborrow-hints nil))
+
 
 (provide 'lang/bbt-rust)
