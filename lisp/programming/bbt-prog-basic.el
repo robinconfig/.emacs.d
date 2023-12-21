@@ -5,11 +5,13 @@
 
 (use-package flycheck
   :ensure t
-  :init ;; 在 (require) 之前需要执行的
+  :init 
   (setq flycheck-emacs-lisp-load-path 'inherit)
   :config
   (setq truncate-lines nil) ; 如果单行信息很长会自动换行
-  :hook (prog-mode . flycheck-mode))
+  :hook
+  (prog-mode . flycheck-mode)
+  (sh-mode . (lambda () (flycheck-list-errors))))
 
 
 (use-package highlight-parentheses

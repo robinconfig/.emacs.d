@@ -48,5 +48,16 @@
 (setq use-package-always-ensure t)
 (setq warning-minimum-level :emergency)
 
+;; package自动更新配置
+(use-package auto-package-update
+  :config
+  (auto-package-update-maybe)
+  (setq auto-package-update-delete-old-versions t)
+  ;; 隐藏更新结果
+  ;;(setq auto-package-update-hide-results t)
+  ;; 配置某些禁止自动更新的包
+  ;; (setq auto-package-update-excluded-packages '(magit ivy))
+  )
+
 
 (provide 'bbt-package)

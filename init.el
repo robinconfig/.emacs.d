@@ -7,6 +7,13 @@
 (when (version< emacs-version "27.1")
   (message "Your Emacs is old, and some functionality in this config will be disabled. Please upgrade if possible."))
 
+
+;; 设置自定义配置文件
+;;(if (file-exists-p "~/.emacs.d/emacs-custom.el") nil
+;;  (write-region "" nil "~/.emacs.d/emacs-custom.el"))
+(setq custom-file (concat user-emacs-directory "custom.el"))
+
+
 ;; 将lisp文件夹添加到加载路径(path)中.
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
@@ -42,9 +49,13 @@
 (require 'init-yasnippet)
 (require 'init-format)
 (require 'programming/bbt-lsp)
+(require 'programming/bbt-sh)
 (require 'programming/bbt-elisp)
 (require 'programming/bbt-golang)
 (require 'programming/bbt-python)
 (require 'programming/bbt-rust)
+
+(load custom-file :noerror)
+
 
 (provide 'init)

@@ -17,6 +17,7 @@ function install_menlo_font() {
 
 function main() {
     install_menlo_font
+    pacman -S shellcheck
 }
 
 main
