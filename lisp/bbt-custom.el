@@ -10,7 +10,7 @@
   :prefix "bbt-"
   :group 'applications)
 
-(defcustom bbt-theme 'vscode
+(defcustom bbt-theme 'modus-themes
   "主题配置"
   :tag "Theme"
   :group 'bbt

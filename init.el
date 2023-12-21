@@ -24,28 +24,27 @@
 (require 'ui/bbt-font)
 (require 'ui/bbt-mode-line)
 
-(require 'bbt-ivy)
 (require 'bbt-evil)
+(require 'bbt-ivy)
 ;; (require 'init-file-manage)
-(require 'init-completion)
-(require 'init-yasnippet)
-(require 'init-format)
 (require 'init-autoinsert)
 
 (require 'init-minibuffer)
 
-(require 'lang/init-lsp)
-(require 'init-hint)
 (require 'init-vcs)
 (require 'bbt-formatter)
 
 ;; 特定Major Mode配置
 ;; (require 'lang/bbt--tree-sitter)
-(require 'bbt-programming)
 (require 'init-org)
-(require 'init-elisp)
-(require 'lang/init-golang)
-(require 'lang/init-python)
-(require 'lang/bbt-rust)
+(require 'programming/bbt-prog-basic)
+(require 'init-completion)
+(require 'init-yasnippet)
+(require 'init-format)
+(require 'programming/bbt-lsp)
+(require 'programming/bbt-elisp)
+(require 'programming/bbt-golang)
+(require 'programming/bbt-python)
+(require 'programming/bbt-rust)
 
 (provide 'init)
