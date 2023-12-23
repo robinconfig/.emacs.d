@@ -18,6 +18,8 @@ function install_menlo_font() {
 function main() {
     install_menlo_font
     pacman -S shellcheck
+    # install ag:
+    pacman -S the_silver_searcher
     npm i -g bash-language-server
 }
 
