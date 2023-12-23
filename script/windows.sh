@@ -1,1 +1,2 @@
-choco install shellcheck
+scoop install shellcheck
+npm i -g bash-language-server

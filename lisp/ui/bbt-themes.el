@@ -34,7 +34,7 @@
 (defun use-modus-themes ()
   ;;; 使用modus主题
   (use-package modus-themes
-    :ensure t ;; 使用packaged包
+    :ensure t
     :init
     ;; Add all your customizations prior to loading the themes
     (setq modus-themes-italic-constructs t

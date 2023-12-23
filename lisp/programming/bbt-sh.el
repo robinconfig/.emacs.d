@@ -2,6 +2,10 @@
 ;;(setq debug-on-error t)
 
 ;; auto completion
+(use-package lsp-mode
+  :commands lsp
+  :hook
+  (sh-mode . lsp-deferred))
 
 ;; error linting
 ;; flycheck识别到是shell脚本之后会默认调用shellcheck来完成语法静态分析

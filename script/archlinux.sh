@@ -18,6 +18,7 @@ function install_menlo_font() {
 function main() {
     install_menlo_font
     pacman -S shellcheck
+    npm i -g bash-language-server
 }
 
 main

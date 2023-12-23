@@ -10,7 +10,7 @@
   :prefix "bbt-"
   :group 'applications)
 
-(defcustom bbt-theme 'modus-themes
+(defcustom bbt-theme 'atom-one-themes
   "主题配置"
   :tag "Theme"
   :group 'bbt
