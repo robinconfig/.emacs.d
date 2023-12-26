@@ -24,6 +24,9 @@
 (require 'bbt-package)
 (require 'bbt-basic)
 (require 'bbt-custom)
+(require 'bbt-config)
+(require 'openeyes-keybinding)
+(require 'openeyes-tools)
  
 ;; 视觉相关配置
 (require 'ui/bbt-ui-basic)
