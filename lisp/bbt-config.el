@@ -11,7 +11,7 @@
   :prefix "bbt-"
   :group 'applications)
 
-(defcustom bbt-theme 'atom-one-themes
+(defcustom bbt-theme 'ef-themes
   "主题配置"
   :tag "Theme"
   :group 'bbt
@@ -19,16 +19,22 @@
 	  (const :tag "modus-themes" modus-themes)
 	  (const :tag "doom-themes" doom-themes)
 	  (const :tag "atom-one-themes" atom-one-themes)
-	  (const :tag "VSCode Dark" vscode)))
+	  (const :tag "VSCode Dark" vscode)
+	  (const :tag "Nord" nord)
+	  (const :tag "Gruvbox" gruvbox)
+	  (const :tag "Solarized" solarized)
+	  (const :tag "ef themes" ef-themes)
+	  (const :tag "Sanityinc Tomorrow" sanityinc-tomorrow)))
 
 
-(defcustom bbt-theme-style 'light
+(defcustom bbt-theme-style 'white
   "深浅主题配置"
   :tag "Theme Style"
   :group 'bbt
   :type '(choice
 	  (const :tag "Light" light)
-	  (const :tag "Dark" dark)))
+	  (const :tag "Dark" dark)
+	  (const :tag "White" white)))
 
 
 (provide 'bbt-config)

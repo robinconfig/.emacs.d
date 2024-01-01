@@ -1,3 +1,6 @@
+
+;; TODO:: 自动格式化文件
+
 (use-package lsp-pyright
   :ensure t
   :hook (python-mode . (lambda ()

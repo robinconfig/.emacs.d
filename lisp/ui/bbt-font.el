@@ -6,7 +6,6 @@
   :config
   (cnfonts-mode 1)
   ;; 添加两个字号增大缩小的快捷键
-  ;; todo:: 不起作用
   (define-key cnfonts-mode-map (kbd "C--") #'cnfonts-decrease-fontsize)
   (define-key cnfonts-mode-map (kbd "C-=") #'cnfonts-increase-fontsize))
 
@@ -37,7 +36,7 @@
 	  (f-emo (cabins-find-font (plist-get args :emoji) cabins-fonts-emoji))
 	  (f-cjk (cabins-find-font (plist-get args :cjk) cabins-fonts-cjk)))
       (set-face-attribute 'default nil :family f-def)
-      (setq face-font-rescale-alist `((,f-cjk . 1.2)))
+      (setq face-font-rescale-alist `((,f-cjk . 1.0)))
       (dolist (pair `((unicode  . ,f-uni)
 		      (emoji    . ,f-emo)
 		      (kana     . ,f-cjk)
