@@ -9,6 +9,11 @@
   (define-key cnfonts-mode-map (kbd "C--") #'cnfonts-decrease-fontsize)
   (define-key cnfonts-mode-map (kbd "C-=") #'cnfonts-increase-fontsize))
 
+;; (global-set-key (kbd "C-=") 'text-scale-increase)
+;; (global-set-key (kbd "C--") 'text-scale-decrease)
+;; (global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
+;; (global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)
+
 (defvar cabins-os-win (memq system-type '(ms-dos windows-nt cygwin)))
 (defvar cabins-os-mac (eq system-type 'darwin))
 (defvar cabins-fonts-default '("Courier Prime" "Jetbrains Mono" "Roboto Mono" "Cascadia Code PL" "Menlo" "Consolas"))
