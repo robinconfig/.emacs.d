@@ -13,11 +13,11 @@
 	     (lambda (new-frame)
 	       (select-frame new-frame)
 	       ;; English Font
-	       (set-face-attribute 'default nil :font "Fira Mono 12")
+	       (set-face-attribute 'default nil :font "Fira Mono 16")
 	       ;; Chinese Font
 	       (dolist (charset '(kana han symbol cjk-misc bopomofo))
 		 (set-fontset-font (frame-parameter nil 'font)
-				   charset (font-spec :family "Noto Sans CJK SC" :size 12)))))
+				   charset (font-spec :family "Noto Sans CJK SC" :size 16)))))
 
 
 (use-package ace-window

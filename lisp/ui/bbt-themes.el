@@ -1,6 +1,5 @@
 ;;; --- 主题配置
 ;; (setq custom-safe-themes t)
-(require 'bbt-custom)
 
 (defun oe/use-doom-themes ()
   ;; 使用doom-theme

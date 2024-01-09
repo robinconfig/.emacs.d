@@ -1,3 +1,14 @@
-* 全局
+ 
+一. 快捷键映射
+#+begin_src emacs-lisp :results silent
+(define-key key-translation-map (kbd "your-key") (kbd "target-key"))
+#+end_src
+你在任何时候按下"your-key"，编辑器将执行"target-key"所绑定的命令。无论当时处于何种编辑状态，是否有minor-mode触发，该映射都不受影响，属于优先级最高的键绑定方式。
 
-* elisp模式
+特点：由于映射键是完全的跳转到了另一个键上，所以一旦目标键的定义发生了变化，该键也会随之受到影响。
+
+注销方式：把这个key重新映射为它自己。
+
+适用情况：
+- 常用的、重要的，但按键较为复杂的命令，如"C-x C-s"固定的绑定的'save-buffer，"C-M-i"固定绑定的'completion-at-point，"C-M-%"固定绑定的'query-replace-regexp。你可以用更简单的键来映射它们。
+- 常用的，重要的，但在不同mode下会发生变动的命令，如常规编辑中的"C-g"对应的是'keyboard-quit，在minibuffer下会变成'minibuffer-keyboard-quit。如果你将某个键绑定为'keyboard-quit，你会发现它在minibuffer下就没法用了。对于这种情况，最好的办法就是直接映射。

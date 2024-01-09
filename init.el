@@ -23,10 +23,10 @@
 (require 'bbt-constant)
 (require 'bbt-package)
 (require 'bbt-basic)
-(require 'bbt-custom)
 (require 'bbt-config)
 (require 'openeyes-keybinding)
 (require 'openeyes-tools)
+;; (require 'openeyes-encoding)
  
 ;; 视觉相关配置
 (require 'ui/bbt-ui-basic)
@@ -43,6 +43,8 @@
 
 (require 'init-vcs)
 (require 'bbt-formatter)
+
+(require 'openeyes-project)
 
 ;; 特定Major Mode配置
 ;; (require 'lang/bbt--tree-sitter)
