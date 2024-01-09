@@ -1,8 +1,20 @@
-;;; --- 编码配置 -*- lexical-binding: t -*-
+;;; 编码配置 -*- lexical-binding: t -*-
+
 
 ;;(setq debug-on-error t)
 
-
+(set-language-environment "UTF-8")
+;; 设置emacs 使用 utf-8
+(setq locale-coding-system 'utf-8)
+;; 设置键盘输入时的字符编码
+(set-keyboard-coding-system 'utf-8)
+(set-selection-coding-system 'utf-8)
+;; 文件默认保存为 utf-8
+(set-buffer-file-coding-system 'utf-8)
+(set-default buffer-file-coding-system 'utf8)
+(set-default-coding-systems 'utf-8)
+;; 解决粘贴中文出现乱码的问题
+(set-clipboard-coding-system 'utf-8)
 ;; 终端中文乱码
 (set-terminal-coding-system 'utf-8)
 (modify-coding-system-alist 'process "*" 'utf-8)
@@ -25,5 +37,6 @@
 (add-hook 'shell-mode-hook 'change-shell-mode-coding)
 (autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on) 
+
 
 (provide 'openeyes-encoding)
