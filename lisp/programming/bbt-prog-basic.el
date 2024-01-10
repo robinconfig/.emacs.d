@@ -10,8 +10,9 @@
   :config
   (setq truncate-lines nil) ; 如果单行信息很长会自动换行
   :hook
-  (prog-mode . flycheck-mode)
-  (sh-mode . (lambda () (flycheck-list-errors))))
+  (progn 
+    (prog-mode . flycheck-mode)
+    (sh-mode . (lambda () (flycheck-list-errors)))))
 
 
 (use-package highlight-parentheses

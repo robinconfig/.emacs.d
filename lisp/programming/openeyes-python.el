@@ -7,6 +7,17 @@
                          (require 'lsp-pyright)
                          (lsp-deferred))))  ; or lsp
 
+(use-package lsp-mode
+  :hook (
+	 (python-mode . lsp-deferred)))
+
+; let's add the lsp company backend
+(use-package company-lsp
+:ensure t
+:config
+(push 'company-lsp company-backends))
+
+
 
 ;;; (setq lsp-pyls-server-command "D:\ProgramFiles\Python\Scripts")
 ;;; (if (eq system-type 'darwin)
@@ -24,4 +35,4 @@
       )
 
 
-(provide 'programming/bbt-python)
+(provide 'programming/openeyes-python)
