@@ -1,3 +1,5 @@
+(require 'openeyes-utils)
+
 (use-package go-mode
   :config
   (progn
@@ -6,7 +8,7 @@
     ))
 
 ;; 如果你使用的是 MacOS 系统，那么需要使用 exec-path-from-shell 让 Emacs 读取系统的环境变量，不然 Emacs 可能找不到你安装的 go。
-(when sys/macp
+(when openeyes/is-macOS
   (use-package exec-path-from-shell
     :straight t
     :config

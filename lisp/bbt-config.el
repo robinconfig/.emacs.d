@@ -1,5 +1,5 @@
 ;;; 配置文件
-(require 'bbt-constant)
+(require 'openeyes-utils)
 
 (setq user-full-name "RobinVanYang")
 (setq user-mail-address "thehappyone@163.com")
@@ -37,6 +37,8 @@
 	  (const :tag "Dark" dark)
 	  (const :tag "White" white)))
 
-(defconst openeyes/project-path (if sys/windows '("E:/workspace/.config/.emacs.d/" "E:/workspace/code/python" "E:/workspace/code/golang") '("~/workspace/code")))
+(defconst openeyes/project-path
+  (cond
+   (openeyes/is-windows '("E:/workspace/.config/.emacs.d/" "E:/workspace/code/python" "E:/workspace/code/golang"))))
 
 (provide 'bbt-config)

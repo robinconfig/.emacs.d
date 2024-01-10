@@ -20,7 +20,7 @@
 ;; measure startup time
 ;; (require 'init-benchmarking)
 
-(require 'bbt-constant)
+(require 'openeyes-utils)
 (require 'bbt-package)
 (require 'bbt-basic)
 (require 'bbt-config)
