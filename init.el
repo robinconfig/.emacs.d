@@ -1,5 +1,8 @@
 ;;; Emacs配置入口
 
+;; Produce backtraces when errors occur: can be helpful to diagnose startup issues
+;;(setq debug-on-error t)
+
 ;; 检查emacs版本, 如果太老,提示更新
 (let ((minver "26.1"))
   (when (version< emacs-version minver)
@@ -27,32 +30,26 @@
 (require 'openeyes-encoding)
 (require 'openeyes-keybinding)
 (require 'openeyes-tools)
- 
+
+(require 'bbt-evil)
+(require 'init-vcs)
+
 ;; 视觉相关配置
 (require 'ui/bbt-ui-basic)
 (require 'ui/bbt-themes)
 (require 'ui/bbt-font)
 (require 'ui/bbt-mode-line)
 
-(require 'bbt-evil)
 (require 'bbt-ivy)
-;; (require 'init-file-manage)
-(require 'init-autoinsert)
-
 (require 'init-minibuffer)
 
-(require 'init-vcs)
-(require 'bbt-formatter)
-
 (require 'openeyes-project)
+(require 'openeyes-better-edit)
 
 ;; 特定Major Mode配置
 ;; (require 'lang/bbt--tree-sitter)
 (require 'init-org)
 (require 'programming/bbt-prog-basic)
-(require 'init-completion)
-(require 'init-yasnippet)
-(require 'init-format)
 (require 'programming/bbt-asm)
 (require 'programming/bbt-lsp)
 (require 'programming/bbt-sh)

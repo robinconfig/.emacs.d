@@ -7,13 +7,14 @@
   :config (counsel-mode))
 
 (use-package ivy
-  :diminish
+  :ensure t
+  :diminish ivy-mode
   :bind (("C-c C-r" . ivy-resume)
          ("C-x B" . ivy-switch-buffer-other-window))
   :custom
   (ivy-count-format "(%d/%d) ")
   (ivy-use-virtual-buffers t)
-  :config (ivy-mode))
+  :hook (after-init . ivy-mode))
 
 (use-package ivy-rich
   :after ivy

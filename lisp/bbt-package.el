@@ -59,5 +59,8 @@
   ;; (setq auto-package-update-excluded-packages '(magit ivy))
   )
 
+;; 可以单独或者和user-package结合来配置minor mode包在modeline上的显示.
+(use-package diminish :ensure t)
+
 
 (provide 'bbt-package)
