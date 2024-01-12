@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: header
+# key: <he
+# --
+#+title: $1
+#+author: `(user-full-name)`
+#+date: `(format-time-string "%Y-%m-%d")`

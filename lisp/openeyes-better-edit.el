@@ -18,6 +18,7 @@
         company-show-quick-access t              ; 显示编号（然后可以用 M-数字 快速选定某一项）
         company-idle-delay 0.0                   ; 延时多少秒后弹出
         company-minimum-prefix-length 1          ; 1个字符就开始补全
+	company-global-modes '(not eshell-mode)  ; eshell-mode禁用company
         ))
 
 ;;; company的icon支持， 显示doc.
@@ -35,6 +36,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package company-tabnine
   :ensure t
+  :after company
   :init (add-to-list 'company-backends #'company-tabnine))
 
 
@@ -69,12 +71,28 @@
   :ensure t
   :init
   (yas-global-mode 1)
+  :after company
   :config
-  (add-to-list 'yas-snippet-dirs (locate-user-emacs-file "snippets")))
+  (add-to-list 'yas-snippet-dirs (locate-user-emacs-file "snippets"))
+  ;; add company-yasnippet to company-backends
+  (defun company-mode/backend-with-yas (backend)
+    (if (and (listp backend) (member 'company-yasnippet backend))
+	backend
+      (append (if (consp backend) backend (list backend))
+              '(:with company-yasnippet))))
+  (setq company-backends (mapcar #'company-mode/backend-with-yas company-backends))
+  ;; unbind <TAB> completion
+  ;; (define-key yas-minor-mode-map [(tab)]        nil)
+  ;; (define-key yas-minor-mode-map (kbd "TAB")    nil)
+  ;; (define-key yas-minor-mode-map (kbd "<tab>")  nil)
+  ;; ;; :bind
+  ;; (:map yas-minor-mode-map ("S-<tab>" . yas-expand))
+  )
 
 ;; 加载AndreaCrotti维护的snippets, 至于如何使用,有待挖掘.
-;;(use-package yasnippet-snippets
-;;  :ensure t)
+(use-package yasnippet-snippets
+  :ensure t
+  :after yasnippet)
 
 
 
