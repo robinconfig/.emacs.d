@@ -1,0 +1,16 @@
+#+title: Emacs之Python开发配置
+#+author: RobinVanYang
+#+date: 2024-01-14
+
+* vritualenv配置
+
+* LSP
+** 格式化
+** 高亮
+** 自动完成
+
+* 语法错误检查(静态分析)
+
+* 运行
+
+* 交互式调试环境
