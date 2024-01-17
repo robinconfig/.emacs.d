@@ -30,7 +30,7 @@
   :ensure t
   :config
   (setq centaur-tabs-set-modified-marker t ;; 文件变化显示
-	centaur-tabs-height 32
+	;; centaur-tabs-height 32
 	centaur-tabs-set-bar 'under
         centaur-tabs-show-count nil
         ;; centaur-tabs-label-fixed-length 15
