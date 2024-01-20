@@ -1,5 +1,9 @@
 #!/bin/bash
 
+function install_node_env() {
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+}
+
 function install_menlo_font() {
     MENLO_FONT_DIR="/usr/share/fonts/menlo/"
     sudo mkdir $MENLO_FONT_DIR
@@ -17,9 +21,10 @@ function install_menlo_font() {
 
 function main() {
     install_menlo_font
-    pacman -S shellcheck
+    paru -S shellcheck
     # install ag:
-    pacman -S the_silver_searcher
+    paru -S the_silver_searcher
+    # install_node_env
     npm i -g bash-language-server
     pip install python-lsp-server
 }

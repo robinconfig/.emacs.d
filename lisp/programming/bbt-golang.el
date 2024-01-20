@@ -7,13 +7,11 @@
     (add-hook 'before-save-hook 'gofmt-before-save)
     ))
 
-;; 如果你使用的是 MacOS 系统，那么需要使用 exec-path-from-shell 让 Emacs 读取系统的环境变量，不然 Emacs 可能找不到你安装的 go。
-(when openeyes/is-macOS
+;; 使用 exec-path-from-shell 让 Emacs 读取系统的环境变量，不然 Emacs 可能找不到你安装的 go。
+(when (not openeyes/is-windows)
   (use-package exec-path-from-shell
     :straight t
     :config
-    (setq exec-path-from-shell-arguments '("-l"))
-    (add-hook 'after-init-hook #'exec-path-from-shell-initialize)
     (with-eval-after-load "go-mode"
       (with-eval-after-load "exec-path-from-shell"
 	(exec-path-from-shell-copy-envs '("GOPATH" "GO111MODULE" "GOPROXY"))))

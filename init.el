@@ -25,7 +25,7 @@
 
 (require 'openeyes-utils)
 (require 'bbt-package)
-(require 'bbt-basic)
+(require 'openeyes-basic)
 (require 'bbt-config)
 (require 'openeyes-encoding)
 (require 'openeyes-keybinding)

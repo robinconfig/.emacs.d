@@ -1,5 +1,7 @@
 ;;; emacs基础配置
 
+(require 'openeyes-utils)
+
 ;; 当另一程序修改了文件时，让 Emacs 及时刷新 Buffer
 (global-auto-revert-mode t)
 ;; 选中文本后输入文本会替换文本（更符合我们习惯了的其它编辑器的逻辑）
@@ -21,5 +23,13 @@
   :init
   (command-log-mode))
 
+;;; config emacs to run external command by recognize system path.
+(when openeyes/is-macOS
+  (use-package exec-path-from-shell
+    :straight t
+    :config
+    (setq exec-path-from-shell-arguments '("-l"))
+    (add-hook 'after-init-hook #'exec-path-from-shell-initialize)))
 
-(provide 'bbt-basic)
+
+(provide 'openeyes-basic)
