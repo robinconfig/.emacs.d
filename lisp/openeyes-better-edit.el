@@ -34,10 +34,10 @@
 ;;; 但是总的来说，AI 插件会导致偶尔的高 CPU 占用.
 ;;; 如果电脑硬件性能不佳，建议尽量关闭后台训练功能，或者是直接使用传统补全插件就好
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(use-package company-tabnine
-  :ensure t
-  :after company
-  :init (add-to-list 'company-backends #'company-tabnine))
+;; (use-package company-tabnine
+;;   :ensure t
+;;   :after company
+;;   :init (add-to-list 'company-backends #'company-tabnine))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

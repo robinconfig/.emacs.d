@@ -57,4 +57,4 @@
   (lsp-rust-analyzer-display-reborrow-hints nil))
 
 
-(provide 'programming/bbt-rust)
+(provide 'programming/openeyes-rust)

@@ -56,7 +56,8 @@
 (require 'programming/bbt-elisp)
 (require 'programming/bbt-golang)
 (require 'programming/openeyes-python)
-(require 'programming/bbt-rust)
+(require 'programming/openeyes-rust)
+(require 'programming/openeyes-web)
 
 (load custom-file :noerror)
 
