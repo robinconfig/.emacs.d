@@ -123,12 +123,12 @@
 
 ;; Auto Pair Bracket, use autopair before, now in Emacs 24.4 and after, use electric-pair-mode instead.
 (electric-pair-mode 1)
-(setq electric-pair-pairs '(
-			    (?" . ?")
-			    (?` . ?`)
-			    (?( . ?))
-			    (?{ . ?})
-			    ))
+;; (setq electric-pair-pairs '(
+;; 			    (?" . ?")
+;; 			    (?` . ?`)
+;; 			    (?( . ?))
+;; 			    (?{ . ?})
+;; 			    ))
 
 
 (provide 'openeyes-better-edit)

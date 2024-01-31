@@ -15,14 +15,32 @@
     (sh-mode . (lambda () (flycheck-list-errors)))))
 
 
-(use-package highlight-parentheses
+;; (use-package highlight-parentheses
+;;   :ensure t
+;;   :pin melpa
+;;   :hook (prog-mode . highlight-parentheses-mode)
+;;   )
+
+(use-package smartparens
+  :diminish nil
+  :config
+  (sp-use-smartparens-bindings))
+
+(use-package smartparens-config
+  :diminish nil
+  :ensure smartparens
+  :config (progn (show-smartparens-global-mode t)))
+
+(add-hook 'prog-mode-hook 'turn-on-smartparens-strict-mode)
+
+(use-package paren
   :ensure t
-  ;; 指定从melpa仓库中读取
-  :pin melpa
-  ;; 在编程语言模式中启用此mode
-  :hook (prog-mode . highlight-parentheses-mode)
-  :config 
-  (setq hl-paren-background-colors '("orangered4"))
-  (setq hl-paren-colors '("black")))
+  :config
+  (setq show-paren-delay 0.1
+        show-paren-when-point-in-periphery t))
+
+(use-package rainbow-delimiters
+  :ensure t
+  :hook (prog-mode . rainbow-delimiters-mode))
 
 (provide 'programming/bbt-prog-basic)
