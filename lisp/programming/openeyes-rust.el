@@ -39,7 +39,7 @@
   :ensure
   :commands lsp
   :hook (
-	 (go-mode . lsp-deferred))
+	 (rust-mode . lsp-deferred))
   :custom
   ;; what to use when checking on-save. "check" is default, I prefer clippy
   (lsp-rust-analyzer-cargo-watch-command "clippy")

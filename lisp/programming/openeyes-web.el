@@ -1,6 +1,9 @@
 ;;; -*- lexical-binding: t -*-
-
 ;;(setq debug-on-error t)
+
+;;; html:
+;;; 1. 高亮
+;;; 2. emmet编辑
 (use-package emmet-mode
   :ensure t
   :config
@@ -8,6 +11,24 @@
   (add-hook 'web-mode-hook 'emmet-mode)
   (add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
   )
+
+;;; css:
+;;;
+
+;; javascript/typedscript
+;;; 1. 自动完成
+;;; 2. 错误检查(前端flycheck, 后端：?)
+;;; 3. 调试
+
+(use-package lsp-mode
+  :ensure
+  :commands lsp
+  :hook (
+	 (web-mode . lsp-deferred)))
+
+(use-package dap-chrome
+  :ensure t)
+
 
 (use-package web-mode
   :ensure t

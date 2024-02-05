@@ -51,7 +51,6 @@
 (require 'init-org)
 (require 'programming/bbt-prog-basic)
 (require 'programming/bbt-asm)
-(require 'programming/bbt-lsp)
 (require 'programming/bbt-sh)
 (require 'programming/bbt-elisp)
 (require 'programming/bbt-golang)
