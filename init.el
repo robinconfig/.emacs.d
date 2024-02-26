@@ -52,6 +52,7 @@
 (require 'programming/bbt-prog-basic)
 (require 'programming/bbt-asm)
 (require 'programming/bbt-sh)
+(require 'programming/openeyes-c)
 (require 'programming/bbt-elisp)
 (require 'programming/bbt-golang)
 (require 'programming/openeyes-python)
