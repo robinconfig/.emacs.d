@@ -1,24 +1,32 @@
 ;;; 配置package的repo
 
 (require 'package)
-(setq package-enable-at-startup nil)
 
-;; (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
-;; (add-to-list 'package-archives '("nongnu" . "https://elpa.nongnu.org/packages/"))
-;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-;; (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
-
-;; 清华elpa源
-(unless (assoc-default "gnu" package-archives)
-  (add-to-list 'package-archives '("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
-(unless (assoc-default "melpa" package-archives)
-  (add-to-list 'package-archives '("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/") t))
-(unless (assoc-default "melpa-stable" package-archives)
-  (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t))
-(unless (assoc-default "org" package-archives)
-  (add-to-list 'package-archives '("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/") t))
-
-(package-initialize)
+;; 配置镜像
+(cond
+ ;; 官方源
+ ((string= package-mirror "official")
+  (progn
+    (message "mirror is official")
+    (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
+    (add-to-list 'package-archives '("nongnu" . "https://elpa.nongnu.org/packages/"))
+    (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))))
+ ;; 清华源
+ ((string= package-mirror "tuna")
+  (progn
+    (message "mirror is tsinghua")
+    (setq package-archives '(("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+			     ("nongnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")
+			     ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+			     ("melpa-stable" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/stable-melpa/")))))
+ ;; 中科大源
+ ((string= package-mirror "ustc")
+  (progn
+    (message "mirror is ustc")
+    (setq package-archives '(("gnu" . "https://mirrors.ustc.edu.cn/elpa/gnu/")
+			     ("nongnu" . "https://mirrors.ustc.edu.cn/elpa/nongnu/")
+			     ("melpa" . "https://mirrors.ustc.edu.cn/elpa/melpa/")
+			     ("melpa-stable" . "https://mirrors.ustc.edu.cn/elpa/stable-melpa/"))))))
 
 ;; 安装straight包管理器
 (defvar bootstrap-version)

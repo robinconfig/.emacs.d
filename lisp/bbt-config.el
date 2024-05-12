@@ -41,4 +41,8 @@
   (cond
    (openeyes/is-windows '("E:/workspace/.config/.emacs.d/" "E:/workspace/code/python" "E:/workspace/code/golang"))))
 
+;; optional val: official,tuna, ustc
+(defconst package-mirror "ustc")
+
+
 (provide 'bbt-config)

@@ -24,9 +24,9 @@
 ;; (require 'init-benchmarking)
 
 (require 'openeyes-utils)
+(require 'bbt-config)
 (require 'bbt-package)
 (require 'openeyes-basic)
-(require 'bbt-config)
 (require 'openeyes-encoding)
 (require 'openeyes-keybinding)
 (require 'openeyes-tools)
