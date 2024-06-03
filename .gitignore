@@ -1,3 +1,4 @@
+.vscode/
 # emacs配置忽略规则
 eshell/
 auto-save-list/
