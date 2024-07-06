@@ -30,4 +30,7 @@
 ;;| C-c C-p s s | 用 ag 查找项目文件的内容 | 查找所有 User 的出现位置： C-c C-p s s User 。Helm 可以再搭配 C-x C-s 把搜索结果保存起来 |
 
 
+(use-package wgrep
+  :ensure t)
+
 (provide 'openeyes-project)

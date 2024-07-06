@@ -12,3 +12,7 @@
 适用情况：
 - 常用的、重要的，但按键较为复杂的命令，如"C-x C-s"固定的绑定的'save-buffer，"C-M-i"固定绑定的'completion-at-point，"C-M-%"固定绑定的'query-replace-regexp。你可以用更简单的键来映射它们。
 - 常用的，重要的，但在不同mode下会发生变动的命令，如常规编辑中的"C-g"对应的是'keyboard-quit，在minibuffer下会变成'minibuffer-keyboard-quit。如果你将某个键绑定为'keyboard-quit，你会发现它在minibuffer下就没法用了。对于这种情况，最好的办法就是直接映射。
+
+** Windows系统中如何解决和系统快捷键冲突的问题
+目前没有像Emacs处于鼠标焦点时自动拦截所有快捷键组合的办法,只能通过更改其他软件快捷键的方式来避免冲突,具体做法(未实践):
+https://www.zhihu.com/question/23003983/answer/3441382826
